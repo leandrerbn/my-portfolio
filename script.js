@@ -1,8 +1,13 @@
+// Adresse de base du site, déduite de l'emplacement de script.js
+const BASE = new URL(".", document.currentScript.src).href;
+
 async function loadPartial(selector, url) {
   const target = document.querySelector(selector);
   if (!target) return;
-  const response = await fetch(url);
-  target.outerHTML = await response.text();
+  const response = await fetch(BASE + url);
+  const html = await response.text();
+  // Les liens "/..." du partial deviennent relatifs à la base du site
+  target.outerHTML = html.replaceAll('href="/', `href="${BASE}`).replaceAll('src="/', `src="${BASE}`);
 }
 
 function initMenu() {
@@ -65,8 +70,8 @@ function initMenu() {
 
 async function init() {
   await Promise.all([
-    loadPartial("#site-header", "/partials/header.html"),
-    loadPartial("#site-footer", "/partials/footer.html"),
+    loadPartial("#site-header", "partials/header.html"),
+    loadPartial("#site-footer", "partials/footer.html"),
   ]);
   initMenu();
 }
