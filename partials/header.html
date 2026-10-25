@@ -1,0 +1,77 @@
+<header class="sticky top-0 z-50 bg-fond/90 backdrop-blur">
+  <nav class="mx-auto max-w-6xl px-4 lg:max-w-none lg:px-8">
+    <div class="flex items-center justify-between border-b border-neutral-300 py-4">
+      <div class="flex h-10 items-center gap-12 lg:flex-1">
+        <!-- Logo -->
+        <a
+          href="/"
+          class="inline-block text-xl font-medium tracking-tight text-neutral-900 uppercase transition hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-900"
+        >
+          Leandre Robin
+        </a>
+
+        <!-- Liens (ordinateur seulement) -->
+        <ul class="hidden items-center gap-8 lg:ml-auto lg:flex">
+          <li>
+            <a
+              href="/#about"
+              class="text-base font-medium tracking-tight text-neutral-500 transition hover:text-neutral-900"
+            >
+              About me
+            </a>
+          </li>
+          <li>
+            <a
+              href="/#projects"
+              class="text-base font-medium tracking-tight text-neutral-500 transition hover:text-neutral-900"
+            >
+              Projects
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="text-base font-medium tracking-tight text-neutral-500 transition hover:text-neutral-900"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bouton hamburger -->
+      <button
+        id="menu-button"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="menu"
+        class="flex h-10 w-10 flex-col items-start justify-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-900 lg:hidden"
+      >
+        <span class="bar h-[3px] w-6 rounded-full bg-neutral-900 transition duration-300"></span>
+        <span class="bar h-[3px] w-4 rounded-full bg-neutral-900 transition duration-300"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Menu déroulant (téléphone & tablette)-->
+<div id="menu" class="absolute inset-x-0 top-[calc(4.5rem+1px)] z-40 lg:hidden">
+  <ul class="h-[calc(100dvh-4.5rem-1px)] bg-fond px-4 py-6">
+    <li class="mx-auto max-w-6xl py-3">
+      <a href="/#about" class="text-4xl font-bold tracking-tight text-neutral-700 transition hover:text-neutral-900">
+        About me
+      </a>
+    </li>
+    <li class="mx-auto max-w-6xl py-3">
+      <a href="/#projects" class="text-4xl font-bold tracking-tight text-neutral-700 transition hover:text-neutral-900">
+        Projects
+      </a>
+    </li>
+    <li class="mx-auto max-w-6xl py-3">
+      <a href="#contact" class="text-4xl font-bold tracking-tight text-neutral-700 transition hover:text-neutral-900">
+        Contact
+      </a>
+    </li>
+  </ul>
+</div>

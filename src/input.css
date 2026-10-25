@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* POLICE HELVETICA */
+@font-face {
+  font-family: "Helvetica Custom";
+  src: url("../assets/fonts/Helvetica-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Custom";
+  src: url("../assets/fonts/Helvetica-LightOblique.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Custom";
+  src: url("../assets/fonts/Helvetica.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Custom";
+  src: url("../assets/fonts/Helvetica-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Custom";
+  src: url("../assets/fonts/Helvetica-BoldOblique.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Helvetica Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --color-fond: #f4f1ea;
+  --color-texte: #111111;
+  --color-secondaire: #6b6b6b;
+  --color-ligne: #cfcfcd;
+  --color-accent: #e30613;
+
+  /*Animation contact me*/
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-fond);
+    color: var(--color-texte);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  h2,
+  h3 {
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    letter-spacing: 0.08em;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+}
+
+@layer components {
+  .meta {
+    font-weight: 300;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Animation fermeture menu déroulant */
+#menu {
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s 0.5s;
+}
+
+/* Animation ouverture menu déroulant */
+#menu.open {
+  transform: translateY(0);
+  visibility: visible;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s 0s;
+}
+
+/* Animation des liens fermeture menu déroulant */
+#menu li {
+  opacity: 0;
+  transform: translateX(-3rem);
+  transition:
+    opacity 0.2s ease-in,
+    transform 0.2s ease-in;
+}
+
+#menu li:nth-child(3) {
+  transition-delay: 0s;
+}
+#menu li:nth-child(2) {
+  transition-delay: 0.05s;
+}
+#menu li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+/* Animation des liens ouverture menu déroulant */
+#menu.open li {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#menu.open li:nth-child(1) {
+  transition-delay: 0.15s;
+}
+#menu.open li:nth-child(2) {
+  transition-delay: 0.25s;
+}
+#menu.open li:nth-child(3) {
+  transition-delay: 0.35s;
+}
+
+/* Fermeture instantanée (clic sur un lien) : aucune animation */
+#menu.no-anim,
+#menu.no-anim li {
+  transition: none !important;
+}
